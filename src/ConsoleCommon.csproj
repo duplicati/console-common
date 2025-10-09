@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>ConsoleCommon</RootNamespace>
+    <AssemblyName>ConsoleCommon</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>
