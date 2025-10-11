@@ -10,7 +10,7 @@
 
   <PropertyGroup>
     <PackageId>DuplicatiConsoleCommon</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Title>Duplicati Console Common Functions</Title>
     <Authors>duplicati</Authors>
     <Owners>duplicati</Owners>
@@ -18,7 +18,7 @@
     <PackageProjectUrl>https://github.com/duplicati/console-common</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Common functions for Duplicati console applications</Description>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Added 1Password integration</PackageReleaseNotes>
     <Copyright>Copyright 2025, Duplicati Inc</Copyright>
     <PackageTags>ASP.NET Core Logging Security Filter Licensing</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
