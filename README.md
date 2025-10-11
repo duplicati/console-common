@@ -2,7 +2,7 @@
 
 Common functions for Duplicati console applications.
 
-This library provides shared functionality used across Duplicati's console-based applications, including license validation, logging configuration, and security filtering.
+This library provides shared functionality used across Duplicati's console-based applications, including license validation, logging configuration, security filtering, and development configuration setup.
 
 ## Components
 
@@ -37,6 +37,16 @@ Features:
 - Pattern matching to prevent vulnerability scanning
 - Rate limiting with simplified API
 - Custom error responses for blocked requests
+
+### Config Setup
+
+Configuration setup for development environments, including loading environment variables from local files and 1Password vaults.
+
+Key features:
+
+- Development-specific configuration loading
+- 1Password vault integration for secrets
+- Local environment variable file support
 
 ## Installation
 
@@ -88,6 +98,19 @@ builder.AddSimpleSecurityFilter(config);
 
 var app = builder.Build();
 app.UseSimpleSecurityFilter(config);
+```
+
+### Configuration Setup
+
+```csharp
+using ConsoleCommon;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure for development
+builder = builder.ConfigureForDevelopment();
+
+var app = builder.Build();
 ```
 
 ## Requirements
