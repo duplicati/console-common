@@ -21,6 +21,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using Serilog.Events;
 
 namespace ConsoleCommon;
 
@@ -42,13 +43,19 @@ public static class CommonLoggingExtensions
         builder.Host.UseSerilog((context, services, config) =>
         {
             config.Enrich.FromLogContext()
-                .Enrich.FromLogContext()
                 .Enrich.WithClientIp()
                 .Enrich.WithCorrelationId(headerName: "X-Request-Id")
                 .Enrich.WithRequestHeader("X-Forwarded-For")
                 .Enrich.WithRequestHeader("X-Forwarded-Proto")
                 .Enrich.WithRequestHeader("User-Agent")
                 .WriteTo.Console();
+
+            // Silence the built-in ASP.NET Core per-request logging so only Serilog emits a single request summary line.
+            config.MinimumLevel.Override("Microsoft.AspNetCore.Hosting.Diagnostics", LogEventLevel.Warning);
+            config.MinimumLevel.Override("Microsoft.AspNetCore.Routing.EndpointMiddleware", LogEventLevel.Warning);
+            config.MinimumLevel.Override("Microsoft.AspNetCore.Cors.Infrastructure.CorsService", LogEventLevel.Warning);
+            config.MinimumLevel.Override("Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker", LogEventLevel.Warning);
+            config.MinimumLevel.Override("Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor", LogEventLevel.Warning);
 
             if (extras != null)
                 foreach (var p in extras.GetType().GetProperties())
