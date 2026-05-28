@@ -108,7 +108,6 @@ public class ScanningFilterMiddleware(RequestDelegate next, ILogger<ScanningFilt
             path,
             context.Request.QueryString.ToString().ToLowerInvariant(),
             context.Request.Headers["Referer"].ToString(),
-            context.Request.Headers["Cookie"].ToString(),
             context.Request.Headers["X-Forwarded-For"].ToString(),
             context.Request.Headers["X-Forwarded-Host"].ToString()
         };
